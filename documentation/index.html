@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>stockVis Presentation</title>
+  <meta charset="utf-8">
+  <meta name="description" content="stockVis Presentation">
+  <meta name="author" content="Chris Miller">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>stockVis Presentation</h1>
+    <h2>Developing Data Products</h2>
+    <p>Chris Miller<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Welcome to stockVis</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This application will allow the user to select two companies from one of three different stock exchanges (NYSE, NASDAQ, or AMEX) and then the stock proces over a given period of time (selected by the user) will be charted against each other to allow the user to directly compare the returns of the companies in the time period selected.</p>
+
+<p>This uses many of the functions from the quantmod package.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Entering the companies</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The companies can either be directly entered, or you can enter a pattern and the drop-down menus will be populated with the first 1000 companies matching that pattern.  You can also choose to adjust for inflation.<br>
+<img src="./assets/img/screenshot1.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Viewing the plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The application is reactive in that it will automatically update the graph.<br>
+Note: I am having difficulty getting slidify to actually plot the second line on the graph.  Here is the code to generate the graph:</p>
+
+<pre><code class="r">library(quantmod)
+thm &lt;- chart_theme()
+thm$col$line.col &lt;- &#39;blue&#39;
+getSymbols(&quot;GOOG&quot;)
+getSymbols(&quot;GS&quot;)
+chart_Series(Cl(GOOG), type=&#39;line&#39;, theme=thm, name=&quot;GOOG (blue) vs. GS (orange)&quot;)
+add_Series(Cl(GS), on=1)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <article data-timings="">
+    <p>Here is what slidify is outputting:  </p>
+
+<pre><code>## [1] &quot;GOOG&quot;
+</code></pre>
+
+<pre><code>## [1] &quot;GS&quot;
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"> <img src="figure/unnamed-chunk-2-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <article data-timings="">
+    <p>And here is what the application ACTUALLY outputs:</p>
+
+<p><img src="./assets/img/screenshot2.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Welcome to stockVis'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Entering the companies'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Viewing the plot'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='NA'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='NA'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

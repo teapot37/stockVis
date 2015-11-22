@@ -1,0 +1,38 @@
+stockVis Presentation
+========================================================
+author: Chris Miller
+date: `r format(Sys.Date(), format="%B %d %Y")`
+
+<small>
+Developing Data Products
+</small>
+
+First Slide
+========================================================
+
+For more details on authoring R presentations click the
+**Help** button on the toolbar.
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+Slide With Code
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Slide With Plot
+========================================================
+
+```{r echo=FALSE, message=FALSE}
+library(quantmod)
+getSymbols("GS")
+getSymbols("GOOG")
+thm <- chart_theme()
+thm$col$line.col <- 'blue'
+chart_Series(Cl(GOOG), type='line', theme=thm, name="GOOG (blue) vs. GS (orange)")
+add_Series(Cl(GS), on=1)
+```
